@@ -4,9 +4,20 @@ import React from 'react';
 
 function App() {
 
-  const allLettersArray = []
   const [allLetters, setAllLetters] = React.useState([])
   const [revealedLetters, setRevealedLetters] = React.useState([])
+  const [wordOne, setWordOne] = React.useState(["e", "x", "a", "m", "p", "l", "e"])
+  const [wordTwo, setWordTwo] = React.useState(["t", "e", "s", "t"])
+  const [wordThree, setWordThree] = React.useState(["g", "a", "m", "e"])
+  const [wordFour, setWordFour] = React.useState([])
+  const [wordFive, setWordFive] = React.useState([])
+  const [wordSix, setWordSix] = React.useState([])
+  const [wordSeven, setWordSeven] = React.useState([])
+  const [wordEight, setWordEight] = React.useState([])
+  const [wordNine, setWordNine] = React.useState([])
+  const [wordTen, setWordTen] = React.useState([])
+
+  const allLettersArray = []
   let count = 0
 
   const addLetters = (letter, number) => {
@@ -16,39 +27,36 @@ function App() {
     } 
   }
 
-  addLetters("A", 7)
-    addLetters("B", 2)
-    addLetters("C", 3)
-    addLetters("D", 4)
-    addLetters("E", 10)
-    addLetters("F", 2)
-    addLetters("G", 3)
-    addLetters("H", 3)
-    addLetters("I", 4)
-    addLetters("J", 2)
-    addLetters("K", 2)
-    addLetters("L", 4)
-    addLetters("M", 4)
-    addLetters("N", 5)
-    addLetters("O", 5)
-    addLetters("P", 2)
-    addLetters("Q", 2)
-    addLetters("R", 5)
-    addLetters("S", 4)
-    addLetters("T", 4)
-    addLetters("U", 5)
-    addLetters("V", 2)
-    addLetters("W", 2)
-    addLetters("X", 1)
-    addLetters("Y", 2)
-    addLetters("Z", 1)
+  addLetters("a", 7)
+    addLetters("b", 2)
+    addLetters("c", 3)
+    addLetters("d", 4)
+    addLetters("e", 10)
+    addLetters("f", 2)
+    addLetters("g", 3)
+    addLetters("h", 3)
+    addLetters("i", 4)
+    addLetters("j", 2)
+    addLetters("k", 2)
+    addLetters("l", 4)
+    addLetters("m", 4)
+    addLetters("n", 5)
+    addLetters("o", 5)
+    addLetters("p", 2)
+    addLetters("q", 2)
+    addLetters("r", 5)
+    addLetters("s", 4)
+    addLetters("t", 4)
+    addLetters("u", 5)
+    addLetters("v", 2)
+    addLetters("w", 2)
+    addLetters("x", 1)
+    addLetters("y", 2)
+    addLetters("z", 1)
 
   React.useEffect(() => {
-    
     setAllLetters(allLettersArray)
   }, [])
-  
-  
 
   const turnLetter = () => {
     const randomNumber = Math.floor(Math.random() * allLetters.length)
@@ -68,11 +76,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={anagramGameBox} className="App-logo" alt="logo" />
-      </header>
-      <body>
         <h2>
           Let's play Anagrams!
         </h2>
+      </header>
+      <body>
         <button onClick={turnLetter}>
           Turn Letter
         </button>
@@ -87,6 +95,42 @@ function App() {
             </li>
             )
           })}
+        </ul>
+        <ul className="word">
+          {wordOne.map(letter => {
+              count ++
+              return (
+              <li key={letter + count}>
+                <div className="letter-tile">
+                  {letter}
+                </div>
+              </li>
+              )
+            })}
+        </ul>
+        <ul className="word">
+          {wordTwo.map(letter => {
+              count ++
+              return (
+              <li key={letter + count}>
+                <div className="letter-tile">
+                  {letter}
+                </div>
+              </li>
+              )
+            })}
+        </ul>
+        <ul className="word">
+          {wordThree.map(letter => {
+              count ++
+              return (
+              <li key={letter + count}>
+                <div className="letter-tile">
+                  {letter}
+                </div>
+              </li>
+              )
+            })}
         </ul>
       </body>
     </div>
