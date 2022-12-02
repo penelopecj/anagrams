@@ -34,6 +34,20 @@ ul {
   }
 }
 
+.word-submission {
+  display: flex;
+
+  input {
+    font-size: 1.3rem;
+    padding: 5px 8px;
+  }
+}
+
+button {
+  font-size: 1.3rem;
+  padding: 5px 8px;
+}
+
 body {
   padding: 2rem auto;
   display: flex;

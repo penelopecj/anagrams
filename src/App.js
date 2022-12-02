@@ -6,9 +6,14 @@ function App() {
 
   const [allLetters, setAllLetters] = React.useState([])
   const [revealedLetters, setRevealedLetters] = React.useState([])
-  const [wordOne, setWordOne] = React.useState(["e", "x", "a", "m", "p", "l", "e"])
-  const [wordTwo, setWordTwo] = React.useState(["t", "e", "s", "t"])
-  const [wordThree, setWordThree] = React.useState(["g", "a", "m", "e"])
+  const [typedWord, setTypedWord] = React.useState('')
+  const [wordOne, setWordOne] = React.useState([])
+  
+  // "e", "x", "a", "m", "p", "l", "e"
+  const [wordTwo, setWordTwo] = React.useState([])
+  // "t", "e", "s", "t"
+  const [wordThree, setWordThree] = React.useState([])
+  // "g", "a", "m", "e"
   const [wordFour, setWordFour] = React.useState([])
   const [wordFive, setWordFive] = React.useState([])
   const [wordSix, setWordSix] = React.useState([])
@@ -70,7 +75,58 @@ function App() {
     setAllLetters(allLetters)
   }
 
-  console.log('All letters ', allLetters)
+  const makeWord = (e) => {
+    console.log(e.target.value)
+    setTypedWord(e.target.value)
+
+    // setWordOne(e.target.value.split(''))
+
+    // if (!wordOne.length) {
+    //   setWordOne(e.target.value)
+    // } else if (!wordTwo.length) {
+    //   setWordTwo(e.target.value)
+    // } else if (!wordThree.length) {
+    //   setWordThree(e.target.value)
+    // } else if (!wordFour.length) {
+    //   setWordFour(e.target.value)
+    // } else if (!wordFive.length) {
+    //   setWordFive(e.target.value)
+    // }
+
+    // console.log({ wordOne })
+    // console.log({ wordTwo })
+    // console.log({ wordThree })
+    // console.log({ wordFour })
+    // console.log({ wordFive })
+  }
+
+  const submitWord = (e) => {
+    e.preventDefault()
+
+    console.log(typedWord)
+
+    let splitWord = typedWord.split('')
+
+    setWordOne(typedWord.split(''))
+
+    let revealedLettersHolder = revealedLetters
+
+    revealedLettersHolder.forEach(letter => {
+      
+      if (splitWord.includes(letter)) {
+        revealedLettersHolder.splice(revealedLettersHolder[revealedLettersHolder.indexOf(letter)], 1)
+        console.log('revelead letters left: ', revealedLettersHolder)
+        // splitWord.splice(splitWord[splitWord.indexOf(letter)], 1)
+        // console.log('split word letter left: ', splitWord)
+      }
+    })
+
+    setRevealedLetters(revealedLettersHolder)
+
+    setTypedWord('')
+  }
+
+  // console.log('All letters ', allLetters)
 
   return (
     <div className="App">
@@ -96,6 +152,15 @@ function App() {
             )
           })}
         </ul>
+        <form className="word-submission">
+          <input 
+            placeholder="Type your word..." 
+            value={typedWord}
+            onChange={makeWord}
+          />
+          <input type="submit" 
+          onClick={submitWord}/>
+        </form>
         <ul className="word">
           {wordOne.map(letter => {
               count ++
